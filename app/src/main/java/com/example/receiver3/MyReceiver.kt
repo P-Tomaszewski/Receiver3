@@ -4,6 +4,7 @@ import android.app.NotificationChannel
 import android.app.NotificationManager
 import android.app.PendingIntent
 import android.content.BroadcastReceiver
+import android.content.ComponentName
 import android.content.Context
 import android.content.Intent
 import android.os.Build
@@ -17,11 +18,13 @@ open class MyReceiver : BroadcastReceiver() {
     override fun onReceive(context: Context, intent: Intent) {
       createNotificationChannel(context)
         //startService(Intent(context, MyService::class.java))
-
+        val intentNotyfikacji = Intent()
+        intentNotyfikacji.component = ComponentName("com.example.listazakupow", "com.example.listazakupow.activity.AddProductActivity")
+        intentNotyfikacji.putExtra("id",intent.getLongExtra("productId", 0L))
         val pendingIntent = PendingIntent.getActivity(
             context,
             requestCode,
-            intent,
+            intentNotyfikacji,
             PendingIntent.FLAG_CANCEL_CURRENT
         )
         val not = NotificationCompat.Builder(context, "12")
