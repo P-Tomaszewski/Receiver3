@@ -44,7 +44,7 @@ open class MyReceiver : BroadcastReceiver() {
             "asd",
             NotificationManager.IMPORTANCE_DEFAULT
         )
-        notificationChannel.description = "DupaTest"
+        notificationChannel.description = "lok"
 
         val notificationManager = NotificationManagerCompat.from(context)
         notificationManager.createNotificationChannel(notificationChannel)
